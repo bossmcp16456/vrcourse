@@ -18,11 +18,23 @@ public class User {
     @Column(name="NAME")
     private String name;
 
-    @Column(name="USERNAME")
-    private String username;
+    @Column(name="LASTNAME")
+    private String lastname;
 
     @Column(name="PASSWORD")
     private String password;
+
+    @Column(name="EMAIL")
+    private String email;
+
+    @Column(name="GENDER")
+    private String gender;
+
+    @Column(name="TELEPHONE")
+    private String telephone;
+
+    @Column(name="BOOKCOURSEID")
+    private String bookcourseid;
 
     // @JsonIgnore
     // @OneToMany(mappedBy = "user")
@@ -30,15 +42,19 @@ public class User {
 
     public User() {}
 
-    public User(Long id, String name,String username, String password) {
+    public User(Long id, String name,String lastname, String password,String email,String gender,String telephone,String bookcourseid) {
         this.id = id;
         this.name = name;
-        this.username = username;
+        this.lastname = lastname;
         this.password = password;
+        this.email = email;
+        this.gender = gender;
+        this.telephone = telephone;
+        this.bookcourseid = bookcourseid;
     }
 
-    public User(String name, String username, String password) {
-        this(null, name,username, password);
+    public User(String name, String lastname, String password,String email,String gender,String telephone,String bookcourseid) {
+        this(null, name,lastname, password,email,gender,telephone,bookcourseid);
     }
 
     public Long getId() {
@@ -49,18 +65,6 @@ public class User {
         this.id = id;
     }
 
-    // public Set<Booking> getBooking() {
-    //     return booking;
-    // }
-
-    // public void setBooking(Set<Booking> booking) {
-    //     this.booking = booking;
-    // }
-
-    public String getUsername() {
-        return username;
-    }
-
     public String getName() {
         return name;
     }
@@ -69,8 +73,12 @@ public class User {
         this.name = name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getPassword() {
@@ -80,4 +88,38 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getBookcourseid() {
+        return bookcourseid;
+    }
+
+    public void setBookcourseid(String bookcourseid) {
+        this.bookcourseid = bookcourseid;
+    }
+
+    
 }
