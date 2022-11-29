@@ -1,5 +1,7 @@
 package com.mfu.enterprise.enterprise.model;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
     @Entity
@@ -11,66 +13,58 @@ import javax.persistence.*;
         @Column(name="BOOKCOURSE_ID")
         private Long id;
     
-        @Column(name="NAME")
-        private String name;
+        @Column(name="USER_ID")
+        private Long userid;
     
-        @Column(name="USERNAME")
-        private String username;
+        @Column(name="COURSE_ID")
+        private Long courseid;
     
-        @Column(name="PASSWORD")
-        private String password;
+        @Column(name="DATETIME")
+        private Date datetime;
     
     
         public BookCourse() {}
     
-        public BookCourse(Long id, String name,String username, String password) {
+        public BookCourse(Long id, Long userid,Long courseid, Date datetime) {
             this.id = id;
-            this.name = name;
-            this.username = username;
-            this.password = password;
+            this.userid = userid;
+            this.courseid = courseid;
+            this.datetime = datetime;
         }
     
-        public BookCourse(String name, String username, String password) {
-            this(null, name,username, password);
+        public BookCourse(Long userid, Long courseid, Date datetime) {
+            this(null, userid,courseid, datetime);
         }
     
         public Long getId() {
             return id;
         }
+       
+        public Long getUserid() {
+            return userid;
+        }
     
+        public Long getCourseid() {
+            return courseid;
+        }
+    
+        public Date getDatetime() {
+            return datetime;
+        }
+
         public void setId(Long id) {
             this.id = id;
+        }   
+
+        public void setUserid(Long userid) {
+            this.userid = userid;
         }
     
-        // public Set<Booking> getBooking() {
-        //     return booking;
-        // }
-    
-        // public void setBooking(Set<Booking> booking) {
-        //     this.booking = booking;
-        // }
-    
-        public String getUsername() {
-            return username;
+        public void setCourseid(Long courseid) {
+            this.courseid = courseid;
         }
     
-        public String getName() {
-            return name;
-        }
-    
-        public void setName(String name) {
-            this.name = name;
-        }
-    
-        public void setUsername(String username) {
-            this.username = username;
-        }
-    
-        public String getPassword() {
-            return password;
-        }
-    
-        public void setPassword(String password) {
-            this.password = password;
+        public void setDatetime(Date datetime) {
+            this.datetime = datetime;
         }
     }

@@ -16,11 +16,11 @@ import javax.persistence.*;
         @Column(name="NAME")
         private String name;
     
-        @Column(name="USERNAME")
-        private String username;
+        @Column(name="TEACHER_ID")
+        private Long teacherid;
     
-        @Column(name="PASSWORD")
-        private String password;
+        @Column(name="PRICE")
+        private int price;
     
         // @JsonIgnore
         // @OneToMany(mappedBy = "user")
@@ -28,54 +28,46 @@ import javax.persistence.*;
     
         public Course() {}
     
-        public Course(Long id, String name,String username, String password) {
+        public Course(Long id, String name,Long teacherid, int price) {
             this.id = id;
             this.name = name;
-            this.username = username;
-            this.password = password;
+            this.teacherid = teacherid;
+            this.price = price;
         }
     
-        public Course(String name, String username, String password) {
-            this(null, name,username, password);
+        public Course( String name,Long teacherid, int price) {
+            this(null, name,teacherid, price);
         }
     
         public Long getId() {
             return id;
         }
-    
-        public void setId(Long id) {
-            this.id = id;
-        }
-    
-        // public Set<Booking> getBooking() {
-        //     return booking;
-        // }
-    
-        // public void setBooking(Set<Booking> booking) {
-        //     this.booking = booking;
-        // }
-    
-        public String getUsername() {
-            return username;
-        }
-    
+       
         public String getName() {
             return name;
         }
     
+        public Long getTeacherid() {
+            return teacherid;
+        }
+    
+        public int getPrice() {
+            return price;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }   
+
         public void setName(String name) {
             this.name = name;
         }
     
-        public void setUsername(String username) {
-            this.username = username;
+        public void setTeacherid(Long teacherid) {
+            this.teacherid = teacherid;
         }
     
-        public String getPassword() {
-            return password;
-        }
-    
-        public void setPassword(String password) {
-            this.password = password;
+        public void setPrice(int price) {
+            this.price = price;
         }
     }
