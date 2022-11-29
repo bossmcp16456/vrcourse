@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app colordark>
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -19,7 +19,7 @@
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -30,31 +30,27 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <h2>Vitual Reality Couse</h2>
+      <v-spacer></v-spacer>
+      
+      <v-text-field
+        hide-details
+        prepend-icon="mdi-magnify"
+        single-line
+      ></v-text-field>
       <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+      class="ma-2"
+      outlined
+      color="white"
+      href="/mycourse"
+    >
+      My Couse
+    </v-btn>
+      <v-btn icon>
+        <v-icon>mdi-cart-outline</v-icon>
       </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
+      <v-btn icon href="/profile">
+        <v-icon>mdi-account-circle-outline</v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -90,6 +86,7 @@
 
 <script>
 export default {
+  name: 'DefaultLayout',
   data () {
     return {
       clipped: false,
@@ -98,13 +95,19 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'Home',
           to: '/'
+        },
+        
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Profile',
+          to: '/profile'
         },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          title: 'My Course',
+          to: '/mycourse'
         }
       ],
       miniVariant: false,
