@@ -1,202 +1,105 @@
 <template>
-    <div id="app">
-      <v-app id="inspire">
-       <v-row> <v-card
-         
-          class="mx-auto my-12"
-          max-width="374"
-        >
-          <template slot="progress">
-            <v-progress-linear
-              color="deep-purple"
-              height="10"
-              indeterminate
-            ></v-progress-linear>
-          </template>
-      
-          <v-img
-            height="150"
-            src="https://i.ytimg.com/vi/cHN7p4BUpkw/mqdefault.jpg"
-          ></v-img>
-      
-          <v-card-title>Unity tips</v-card-title>
-      
-          <v-card-text>
+  <v-row>
+      <div>
+          <v-col></v-col>
+          <h2>Recomend course</h2>
+          <v-col style="height: 10px"></v-col>
+          <v-row>
+
+              <v-layout wrap>
+                  <v-flex lg3 md4 sm12 xs6 v-for="(b, idx) in this.info" :key="idx" :items="info">
+                      <v-card class="card">
+                          <div class="img">
+                              <img style="" class="text-center" src="https://i.ytimg.com/vi/kH_piLCynto/maxresdefault.jpg" />
+                          </div>
+                          <v-card-title>{{ b.course.name }}</v-card-title>
+                          <v-card-text>
+                              <div>Name : {{ b.course.teacher.name }} {{ b.course.teacher.lastname }}</div>
+                            
+                          </v-card-text>
+                          <v-btn outlined rounded text class="cen mb-5" @click="cc(b)">
+                              Delete
+                          </v-btn>
+                      </v-card>
+                  </v-flex>
+              </v-layout>
+  
+          </v-row>
+  
+      </div>
+  </v-row>
+  </template>
+  
+  <script>
+  import Axios from "axios";
+  export default {
+  
+      data: () => ({
+          show: false,
+          info: [],
+          arrayData: [],
+      }),
+      created() {
+          // this.initialize(),
+          // this.getname()
+          Axios.get('/api/getAllBookcourses').then((res) => {
+              this.info = res.data
+          })
           
-      
-            <div class="my-4 text-subtitle-1">
-              By • Asmodes
-            </div>
-      
-            <div>One of the most comprehensive
-     poker courses available on the Internet!
-    Hours of live play and hand history 
-    review analysis, seeing exactly 
-    how your instructor crushes
-     the micro stakes
-    Extensive poker strategy discussions
-     to help you become a winning poker
-     player</div>
-          </v-card-text>
-      
-          <v-divider class="mx-4"></v-divider>
-      
-          <v-card-title>Class time</v-card-title>
-      
-          <v-card-text>
-            <v-chip-group
-           
-              active-class="deep-purple accent-4 white--text"
-              column
-            >
-              <v-chip>5:30PM</v-chip>
-            </v-chip-group>
-          </v-card-text>
-      
-          <v-card-actions>
-            <v-btn class="saveprofile"
-                color="red"
-                dark
-              >
-                Delete
-              </v-btn> 
-          </v-card-actions>
-        </v-card> <v-card
-      
-          class="mx-auto my-12"
-          max-width="374"
-        >
-          <template slot="progress">
-            <v-progress-linear
-              color="deep-purple"
-              height="10"
-              indeterminate
-            ></v-progress-linear>
-          </template>
-      
-          <v-img
-            height="150"
-            src="https://i.ytimg.com/vi/cHN7p4BUpkw/mqdefault.jpg"
-          ></v-img>
-      
-          <v-card-title>Unity tips</v-card-title>
-      
-          <v-card-text>
-          
-      
-            <div class="my-4 text-subtitle-1">
-              By • Asmodes
-            </div>
-      
-            <div>One of the most comprehensive
-     poker courses available on the Internet!
-    Hours of live play and hand history 
-    review analysis, seeing exactly 
-    how your instructor crushes
-     the micro stakes
-    Extensive poker strategy discussions
-     to help you become a winning poker
-     player</div>
-          </v-card-text>
-      
-          <v-divider class="mx-4"></v-divider>
-      
-          <v-card-title>Class time</v-card-title>
-      
-          <v-card-text>
-            <v-chip-group
-          
-              active-class="deep-purple accent-4 white--text"
-              column
-            >
-              <v-chip>5:30PM</v-chip>
-            </v-chip-group>
-          </v-card-text>
-      
-          <v-card-actions>
-            <v-btn class="saveprofile"
-                color="red"
-                dark
-              >
-                Delete
-              </v-btn> 
-          </v-card-actions>
-        </v-card> <v-card
-          
-          class="mx-auto my-12"
-          max-width="374"
-        >
-          <template slot="progress">
-            <v-progress-linear
-              color="deep-purple"
-              height="10"
-              indeterminate
-            ></v-progress-linear>
-          </template>
-      
-          <v-img
-            height="150"
-            src="https://i.ytimg.com/vi/cHN7p4BUpkw/mqdefault.jpg"
-          ></v-img>
-      
-          <v-card-title>Unity tips</v-card-title>
-      
-          <v-card-text>
-          
-      
-            <div class="my-4 text-subtitle-1">
-              By • Asmodes
-            </div>
-      
-            <div>One of the most comprehensive
-     poker courses available on the Internet!
-    Hours of live play and hand history 
-    review analysis, seeing exactly 
-    how your instructor crushes
-     the micro stakes
-    Extensive poker strategy discussions
-     to help you become a winning poker
-     player</div>
-          </v-card-text>
-      
-          <v-divider class="mx-4"></v-divider>
-      
-          <v-card-title>Class time</v-card-title>
-      
-          <v-card-text>
-            <v-chip-group
-            
-              active-class="deep-purple accent-4 white--text"
-              column
-            >
-              <v-chip>5:30PM</v-chip>
-            </v-chip-group>
-          </v-card-text>
-      
-          <v-card-actions>
-            <v-btn class="saveprofile"
-                color="red"
-                dark
-              >
-                Delete
-              </v-btn> 
-          </v-card-actions>
-        </v-card></v-row>
-      </v-app>
-    </div>
-      </template>
-    
-      <style>
-    .row{
-        margin-bottom: -40px;
-    }
-    
-    /* .profileimg{
-      
-    } */
-    .saveprofile{
-        margin-top:40px;
-        margin-right: 20px;
-      
-    }
-    </style>
+  
+      },
+  
+      methods: {
+          onOpenCourse(data) {
+            this.arrayData.push(data);
+              this.$router.push({
+                  path: "/detail"
+              });
+          },
+          cc(data){
+            console.log(data.id);
+            Axios.delete('/api/deleteBookcourseById/'+data.id).then((res) => {
+              Axios.get('/api/getAllBookcourses').then((res) => {
+              this.info = res.data
+          })
+          })
+          }
+      }
+  };
+  </script>
+  
+  <style scoped>
+  
+  .cen {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+  
+  }
+  
+  .card {
+      padding: 5px;
+      margin: 20px;
+      overflow: hidden;
+      width: 1000px;
+      height: 580px;
+  }
+  
+  img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: auto;
+      height: 250px;
+  }
+  
+  .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+  }
+  </style>
+  

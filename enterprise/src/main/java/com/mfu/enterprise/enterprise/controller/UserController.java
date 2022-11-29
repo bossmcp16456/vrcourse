@@ -61,6 +61,10 @@ public class UserController {
 	  if(oldUserData.isPresent()) {
 		  User updatedUserData = oldUserData.get();
 		  updatedUserData.setName(newUserData.getName());
+		  updatedUserData.setLastname(newUserData.getLastname());
+		  updatedUserData.setEmail(newUserData.getEmail());
+		  updatedUserData.setGender(newUserData.getGender());
+		  updatedUserData.setTelephone(newUserData.getTelephone());
 		  updatedUserData.setPassword(newUserData.getPassword());
 		  
 		  User usrObj = userRepo.save(updatedUserData);
