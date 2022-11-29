@@ -21,7 +21,7 @@ public class UserController {
   
   @Autowired
   private UserRepository userRepo;
-  
+
   @GetMapping("/getAllUsers")
   public ResponseEntity<List<User>> getAllUsers() {
 	  try {

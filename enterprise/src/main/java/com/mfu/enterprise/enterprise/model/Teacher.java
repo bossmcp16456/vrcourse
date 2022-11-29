@@ -17,8 +17,7 @@ import javax.persistence.*;
         @Column(name="LASTNAME")
         private String lastname;
     
-        @Column(name="COURSE_ID")
-        private Long courseid;
+       
     
         // @JsonIgnore
         // @OneToMany(mappedBy = "user")
@@ -26,15 +25,15 @@ import javax.persistence.*;
     
         public Teacher() {}
     
-        public Teacher(Long id, String name,String lastname, Long courseid) {
+        public Teacher(Long id, String name,String lastname) {
             this.id = id;
             this.name = name;
             this.lastname = lastname;
-            this.courseid = courseid;
+            
         }
     
-        public Teacher(String name, String lastname, Long courseid) {
-            this(null, name,lastname, courseid);
+        public Teacher(String name, String lastname) {
+            this(null, name,lastname);
         }
     
         public Long getId() {
@@ -49,9 +48,7 @@ import javax.persistence.*;
             return lastname;
         }
     
-        public Long getCourseid() {
-            return courseid;
-        }
+        
 
         public void setId(Long id) {
             this.id = id;
@@ -65,7 +62,5 @@ import javax.persistence.*;
             this.lastname = lastname;
         }
     
-        public void setCourseid(Long courseid) {
-            this.courseid = courseid;
-        }
+        
     }

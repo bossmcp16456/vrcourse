@@ -54,7 +54,7 @@ public class BookCourseController {
 	  return new ResponseEntity<>(bookcourseObj, HttpStatus.OK);
   }
   
-  @PostMapping("/updateCourseById/{id}")
+  @PostMapping("/updateBookcourseById/{id}")
   public ResponseEntity<BookCourse> updateUserById(@PathVariable Long id, @RequestBody BookCourse newBookcourseData) {
 	  Optional<BookCourse> oldBookcourseData = bookcourseRepo.findById(id);
 	  

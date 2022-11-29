@@ -1,6 +1,5 @@
 package com.mfu.enterprise.enterprise.controller;
 
-
 import com.mfu.enterprise.enterprise.repository.*;
 import com.mfu.enterprise.enterprise.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+@RestController
 public class TeacherController {
     @Autowired
   private TeacherRepository teacherRepo;
