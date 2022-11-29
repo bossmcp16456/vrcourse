@@ -12,59 +12,60 @@ import javax.persistence.*;
         @GeneratedValue(strategy=GenerationType.AUTO)
         @Column(name="BOOKCOURSE_ID")
         private Long id;
-    
-        @Column(name="USER_ID")
-        private Long userid;
-    
-        @Column(name="COURSE_ID")
-        private Long courseid;
-    
+
+        @ManyToOne
+        @JoinColumn(name = "COURSE_ID")
+        private Course course;
+
+        @ManyToOne
+        @JoinColumn(name = "USER_ID")
+        private User user;
+
         @Column(name="DATETIME")
-        private Date datetime;
-    
+        private String datetime;
+        
     
         public BookCourse() {}
     
-        public BookCourse(Long id, Long userid,Long courseid, Date datetime) {
+        public BookCourse(Long id, String datetime) {
             this.id = id;
-            this.userid = userid;
-            this.courseid = courseid;
+           
             this.datetime = datetime;
         }
     
-        public BookCourse(Long userid, Long courseid, Date datetime) {
-            this(null, userid,courseid, datetime);
+        public BookCourse( String datetime) {
+            this(null,  datetime);
         }
     
         public Long getId() {
             return id;
         }
-       
-        public Long getUserid() {
-            return userid;
-        }
-    
-        public Long getCourseid() {
-            return courseid;
-        }
-    
-        public Date getDatetime() {
+        
+        public String getDatetime() {
             return datetime;
         }
 
         public void setId(Long id) {
             this.id = id;
-        }   
-
-        public void setUserid(Long userid) {
-            this.userid = userid;
-        }
+        }        
     
-        public void setCourseid(Long courseid) {
-            this.courseid = courseid;
-        }
-    
-        public void setDatetime(Date datetime) {
+        public void setDatetime(String datetime) {
             this.datetime = datetime;
+        }
+
+        public Course getCourse() {
+            return course;
+        }
+
+        public void setCourse(Course course) {
+            this.course = course;
+        }
+
+        public User getUser() {
+            return user;
+        }
+
+        public void setUser(User user) {
+            this.user = user;
         }
     }

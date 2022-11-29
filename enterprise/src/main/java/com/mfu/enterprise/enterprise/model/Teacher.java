@@ -1,6 +1,10 @@
 package com.mfu.enterprise.enterprise.model;
 
+import java.util.Set;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
     @Entity
     @Table(name = "TEACHER")
@@ -19,10 +23,18 @@ import javax.persistence.*;
     
        
     
-        // @JsonIgnore
-        // @OneToMany(mappedBy = "user")
-        // private Set<Booking> booking;
+         @JsonIgnore
+         @OneToMany(mappedBy = "teacher")
+         private Set<Course> course;
     
+        public Set<Course> getCourse() {
+            return course;
+        }
+
+        public void setCourse(Set<Course> course) {
+            this.course = course;
+        }
+
         public Teacher() {}
     
         public Teacher(Long id, String name,String lastname) {

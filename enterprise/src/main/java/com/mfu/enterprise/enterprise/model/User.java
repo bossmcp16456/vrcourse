@@ -1,8 +1,12 @@
 package com.mfu.enterprise.enterprise.model;
 
+import java.util.Set;
+
 // import java.util.Set;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 // import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -33,16 +37,15 @@ public class User {
     @Column(name="TELEPHONE")
     private String telephone;
 
-    @Column(name="BOOKCOURSEID")
-    private String bookcourseid;
 
-    // @JsonIgnore
-    // @OneToMany(mappedBy = "user")
-    // private Set<Booking> booking;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private Set<BookCourse> bookcourse;
+
 
     public User() {}
 
-    public User(Long id, String name,String lastname, String password,String email,String gender,String telephone,String bookcourseid) {
+    public User(Long id, String name,String lastname, String password,String email,String gender,String telephone) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -50,11 +53,11 @@ public class User {
         this.email = email;
         this.gender = gender;
         this.telephone = telephone;
-        this.bookcourseid = bookcourseid;
+        
     }
 
-    public User(String name, String lastname, String password,String email,String gender,String telephone,String bookcourseid) {
-        this(null, name,lastname, password,email,gender,telephone,bookcourseid);
+    public User(String name, String lastname, String password,String email,String gender,String telephone) {
+        this(null, name,lastname, password,email,gender,telephone);
     }
 
     public Long getId() {
@@ -113,13 +116,6 @@ public class User {
         this.telephone = telephone;
     }
 
-    public String getBookcourseid() {
-        return bookcourseid;
-    }
-
-    public void setBookcourseid(String bookcourseid) {
-        this.bookcourseid = bookcourseid;
-    }
 
     
 }

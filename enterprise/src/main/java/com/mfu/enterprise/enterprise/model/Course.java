@@ -1,6 +1,10 @@
 package com.mfu.enterprise.enterprise.model;
 
+import java.util.Set;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -16,27 +20,28 @@ import javax.persistence.*;
         @Column(name="NAME")
         private String name;
     
-        @Column(name="TEACHER_ID")
-        private Long teacherid;
-    
         @Column(name="PRICE")
         private int price;
     
-        // @JsonIgnore
-        // @OneToMany(mappedBy = "user")
-        // private Set<Booking> booking;
+        @ManyToOne
+        @JoinColumn(name = "TEACHER_ID")
+        private Teacher teacher;
+
+        @JsonIgnore
+        @OneToMany(mappedBy = "course")
+        private Set<BookCourse> bookcourse;
+
     
         public Course() {}
     
-        public Course(Long id, String name,Long teacherid, int price) {
+        public Course(Long id, String name, int price) {
             this.id = id;
-            this.name = name;
-            this.teacherid = teacherid;
+            this.name = name;      
             this.price = price;
         }
     
-        public Course( String name,Long teacherid, int price) {
-            this(null, name,teacherid, price);
+        public Course( String name, int price) {
+            this(null, name, price);
         }
     
         public Long getId() {
@@ -45,10 +50,6 @@ import javax.persistence.*;
        
         public String getName() {
             return name;
-        }
-    
-        public Long getTeacherid() {
-            return teacherid;
         }
     
         public int getPrice() {
@@ -61,13 +62,25 @@ import javax.persistence.*;
 
         public void setName(String name) {
             this.name = name;
-        }
-    
-        public void setTeacherid(Long teacherid) {
-            this.teacherid = teacherid;
-        }
+        }    
     
         public void setPrice(int price) {
             this.price = price;
+        }
+
+        public Teacher getTeacher() {
+            return teacher;
+        }
+
+        public void setTeacher(Teacher teacher) {
+            this.teacher = teacher;
+        }
+
+        public Set<BookCourse> getBookcourse() {
+            return bookcourse;
+        }
+
+        public void setBookcourse(Set<BookCourse> bookcourse) {
+            this.bookcourse = bookcourse;
         }
     }
