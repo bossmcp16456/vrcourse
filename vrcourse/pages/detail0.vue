@@ -6,10 +6,10 @@
         <v-card class="mr-9 mx-auto" max-width="800">
             <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px"></v-img>
 
-            <v-card-title> Top western road trips </v-card-title>
+            <v-card-title> {{info.name}} </v-card-title>
+            <v-card-subtitle> </v-card-subtitle>
+            <v-card-subtitle> {{info.price}} baht </v-card-subtitle>
 
-            <v-card-subtitle> 1,000 miles of wonder </v-card-subtitle>
-          
         </v-card>
 
         <h2 class="mt-10">Date of study :</h2>
@@ -22,7 +22,7 @@
                     </template>
                     <v-date-picker v-model="date" @change="menu2 = false"></v-date-picker>
                 </v-menu>
-                <v-btn>
+                <v-btn @click="bookna()" >
                     Buy
                 </v-btn>
             </v-col>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import Axios from "axios";
 import {
     format,
     parseISO
@@ -39,26 +40,47 @@ import {
 
 export default {
 
-    props: {
-        arrayData: Array
-    },
     data: () => ({
-        
+
         date: format(parseISO(new Date().toISOString()), "yyyy-MM-dd"),
         menu2: false,
+        info: [],
+        form: {
+            course: "1",
+            user: "1",
+            date: "",
+        }
     }),
 
     computed: {
         computedDateFormattedDatefns() {
-            return this.date ? format(parseISO(this.date), "EEEE, MMMM do yyyy") : "";
-        },
-    },
+            return this.date ? format(parseISO(this.date), "EEEE, MMMM do yyyy") : "".toString;
 
-    created() {
-        console.log(this.arrayData);
-        this.info = this.arrayData;
-        console.log(this.info);
+        },
+
     },
+    created() {
+
+        Axios.get('/api/getCourseById/1').then((res) => {
+            this.info = res.data
+        })
+
+    },
+    methods: {
+        test() {
+            console.log(this.info)
+        },
+        bookna() {
+            this.form.date = this.date.toString();
+            Axios.post('/api/addBookcourse', {
+                datetime:this.form.date,
+                course:{id:this.form.course},
+                user:{id:this.form.user}
+            }).then((res) => {
+                alert("Add course successful !");
+            })
+        }
+    }
 
 };
 </script>
