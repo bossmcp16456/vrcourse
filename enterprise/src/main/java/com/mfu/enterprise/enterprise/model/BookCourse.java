@@ -1,6 +1,5 @@
 package com.mfu.enterprise.enterprise.model;
 
-import java.util.Date;
 
 import javax.persistence.*;
 
